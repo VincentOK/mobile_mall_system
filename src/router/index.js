@@ -23,5 +23,10 @@ export default new Router({
             component: resolve => require(['../components/index/messageList.vue'], resolve),
             meta: { title: '消息列表' },
         },
+        {
+            path: '/messageCenter',
+            component: resolve => require(['../components/index/messageCenter.vue'], resolve),
+            meta: { title: '消息中心' },
+        },
     ]
 })

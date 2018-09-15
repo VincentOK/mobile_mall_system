@@ -32,7 +32,7 @@
           </template>
 
           <ul class="msg_slidebar">
-            <li><i class="iconfont mall_icon-xiaoxi" style="padding: 10px 10px 10px 0px"></i>消息中心</li>
+            <li @click="messageList"><i class="iconfont mall_icon-xiaoxi" style="padding: 10px 10px 10px 0px"></i>消息中心</li>
             <li><i class="iconfont mall_icon-mima"   style="padding: 10px 10px 10px 0px"></i>修改密码</li>
             <li><i class="iconfont mall_icon-tuichu6"   style="padding: 10px 10px 10px 0px"></i>退出账号</li>
           </ul>
@@ -111,6 +111,9 @@
       ...mapActions([
         'SHOWSIDEBAR','HIDESIDEBAR'
       ]),
+      messageList(){
+        this.$router.push({path: '../../../messageList'});
+      },
       hideSide:function(){
         this.HIDESIDEBAR();
       },
