@@ -1,30 +1,19 @@
 <template>
   <div>
-    <p class="login_title">时间商城后台管理系统</p>
     <div class="x_input">
-
-      <x-input placeholder="请输入用户名" v-model="username">
-        <i slot="label" class="iconfont mall_icon-shouji">&nbsp;&nbsp;</i>
+      <x-input title="用户名:"  is-type="china-mobile" required placeholder="请输入用户名" v-model="userPhone">
       </x-input>
 
-
-      <x-input placeholder="请输入密码" v-model="password">
-        <i slot="label" class="iconfont mall_icon-mima">&nbsp;&nbsp;</i>
-      </x-input>
-
-      <x-input placeholder="请输入验证码"  class="weui-vcode" v-model="code">
-        <i slot="label" class="iconfont mall_icon-yanzhengma">&nbsp;&nbsp;</i>
+      <x-input title="验证码:" required  placeholder="请输入验证码"   v-model="captcha">
         <x-button slot="right" class="login_btn login_code" type="" mini>获取验证码</x-button>
       </x-input>
 
+      <x-input title="新密码:" type="password" required placeholder="请输入新登录密码" v-model="newPassWord">
+      </x-input>
 
-
-      <x-button class="login_btn btn_sub" type="">登陆</x-button>
-
-      <div class="bottom_all">
-        <label class="login_bottom left_login">商家入驻申请</label>
-        <label class="login_bottom right_login">忘记密码？</label>
-      </div>
+      <x-input title="确认密码:"  type="password" class="weui-vcode"  required placeholder="请再次输入新密码" v-model="chexkPassWord">
+      </x-input>
+      <x-button class="login_btn btn_sub" type="" >确认提交</x-button>
     </div>
   </div>
 </template>
@@ -35,9 +24,10 @@
     name: "forgetPassword",
     data(){
       return{
-        username:'',
-        password:'',
-        code:''
+        userPhone:'',
+        newPassWord:'',
+        chexkPassWord:'',
+        captcha:''
       }
     },
     components: {
@@ -50,6 +40,9 @@
 
 <style scoped>
   .x_input{
+    width: 640px;
+    margin: auto;
+    margin-top: 150px;
     font-size: 28px;
   }
   .bottom_all{
@@ -87,9 +80,5 @@
     font-size: 36px;
     color: #000000;
     margin: 100px 0 136px 0;
-  }
-  .x_input{
-    width: 640px;
-    margin: auto;
   }
 </style>
