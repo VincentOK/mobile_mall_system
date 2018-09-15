@@ -28,5 +28,10 @@ export default new Router({
         component: resolve => require(['../components/tenants.vue'], resolve),
         meta: { title: '商家入驻申请' },
       },
+        {
+            path: '/messageCenter',
+            component: resolve => require(['../components/index/messageCenter.vue'], resolve),
+            meta: { title: '消息中心' },
+        },
     ]
 })
