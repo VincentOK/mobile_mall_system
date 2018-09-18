@@ -119,7 +119,7 @@
       },
       gotoResources(val){
         console.log(val);
-        // this.$route.push(val)
+        this.$router.push({path:val})
       }
     },
     computed:{
