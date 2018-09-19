@@ -57,6 +57,10 @@
       <div style="padding:15px;text-align: left;">
         <check-icon class="check_icon" :value.sync="demo1">我已阅读并同意《时间商城商户入驻协议》</check-icon>
       </div>
+
+      <div class="btn_div">
+        <button>提交申请</button>
+      </div>
     </div>
 </template>
 
@@ -87,6 +91,24 @@
 </script>
 
 <style scoped>
+  .btn_div{
+    width: 295px;
+    margin: auto;
+    background-color: #f10215;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 30px;
+    opacity: 0.5;
+    margin-bottom: 10px;
+  }
+  .btn_div button{
+    border: none;
+    background-color: #f10215;
+    color: white;
+    font-size: 18px;
+    height: 45px;
+    line-height: 45px;
+  }
   .vux-check-icon > .weui-icon-success-circle:before {
     color: #f10215;
   }

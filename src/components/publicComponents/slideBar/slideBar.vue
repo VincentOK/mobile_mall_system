@@ -138,42 +138,42 @@
 <style scoped>
   .msg_slidebar{
     position: absolute;
-    bottom: 72px;
+    bottom: 36px;
     list-style: none;
-    font-size: 26px;
+    font-size: 13px;
     color: #333333;
   }
   .msg_slidebar li{
-    padding: 52px 70px 0px 0px;
+    padding: 26px 35px 0px 0px;
   }
   .bgiconfont{
     color: lightgray;
   }
   .title_children{
     color: #333333;
-    font-size: 30px;
+    font-size: 15px;
     font-weight: 600;
-    margin-top: 44px;
+    margin-top: 22px;
   }
   .twoResources{
-    padding-left: 70px;
+    padding-left: 35px;
   }
   .sidebar-el-menu{
     text-align: left;
   }
   .childrenRes{
-    padding-left: 70px;
-    margin-top: 50px;
-    font-size: 28px;
+    padding-left: 35px;
+    margin-top: 25px;
+    font-size: 14px;
     color: #333333;
   }
   .slideBarTitle{
-    height: 120px;
-    line-height: 120px;
-    font-size: 45px;
+    height: 60px;
+    line-height:60px;
+    font-size: 22.5px;
     background-color: #f10215;
     color: white;
-    padding-left: 40px;
+    padding-left: 20px;
   }
   .menu-mask{
     position:fixed;
@@ -188,7 +188,7 @@
   .side-content{
     z-index: 11;
     position:fixed;
-    width: 375px;
+    width: 187.5px;
     height: 100%;
     background: white;
     top: 0;
@@ -210,8 +210,8 @@
   }
   .slide-fade-enter, .slide-fade-leave-to{
     opacity: 0;
-    -webkit-transform:translate(-286px,0px);
-    transform:translate(-286px,0px);
+    -webkit-transform:translate(-143px,0px);
+    transform:translate(-143px,0px);
     -webkit-transition:opacity 0.3s ease-in-out 0.3s,-webkit-transform 0.3s ease-in-out;
     transition: opacity 0.3s ease-in-out 0.3s,transform 0.3s ease-in-out;
   }
@@ -219,8 +219,8 @@
 
   .change{
     display:block;
-    width:284px;
-    height:200px;
+    width:142px;
+    height:100px;
     background:url(http://p3.qhimg.com/t0134c65e59012a1257.png) no-repeat center;
     background-size:cover;
     border:1px solid #fff;
@@ -228,11 +228,11 @@
   }
   .change img{
     display:block;
-    width:220px;
-    height:180px;
+    width:110px;
+    height:90px;
     opacity:0;
-    -webkit-transform:translate(284px,200px);
-    transform:translate(284px,200px);
+    -webkit-transform:translate(142px,100px);
+    transform:translate(142px,100px);
     -webkit-transition:opacity 0.5s ease-in-out 0.5s,-webkit-transform 1s ease-in-out;
     transition: opacity 0.5s ease-in-out 0.5s,transform 1s ease-in-out;
   }
