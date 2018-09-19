@@ -32,15 +32,15 @@ export default {
   text-align: left;
 }
 .title{
-  font-size: 36px;
+  font-size: 18px;
   font-weight: bold;
-  margin-top: 30px;
-  margin-bottom: 28px;
+  margin-top: 15px;
+  margin-bottom: 14px;
   color: #333;
 }
 .content{
-  margin-top: 60px;
-  font-size: 28px;
+  margin-top: 20px;
+  font-size: 14px;
   color: #333;
   letter-spacing:1px;
 }

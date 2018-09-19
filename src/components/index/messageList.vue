@@ -60,7 +60,7 @@ export default {
   background-color: #f8f8f8;
 }
 .message_all{
-  height: 330px;
+  height: 165px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -68,15 +68,15 @@ export default {
   align-items: center;
 }
 .message_card{
-  width: 698px;
-  height: 244px;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px #f0f0f0;
+  width: 349px;
+  height: 122px;
+  border-radius: 2.5px;
+  box-shadow: 2.5px 2.5px 2.5px #f0f0f0;
   background: #ffffff;
 }
 .header{
-  height: 154px;
-  width: 630px;
+  height: 77px;
+  width: 315px;
   display: flex;
   margin: 0 auto;
   text-align: left;  
@@ -84,13 +84,13 @@ export default {
 }
 .header p{
   color: #333;
-  font-size: 28px;
-  line-height: 50px;
+  font-size: 14px;
+  line-height: 25px;
 }
 .footer{
-  width: 630px;
-  height: 86px;
-  font-size: 28px;
+  width: 315px;
+  height: 43px;
+  font-size: 14px;
   color: #999999;
   margin: auto;
   display: flex;

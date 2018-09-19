@@ -93,25 +93,25 @@ export default {
 <style scoped>
 .snap {
   margin: 0;
-  height: 14px;
+  height: 7px;
   background: #f8f8f8;
 }
 .slide_show {
   width: 90%;
-  height: 236px;
+  height: 118px;
   margin: auto;
   box-sizing: border-box;
-  padding: 42px 0 38px 0;
+  padding: 21px 0 19px 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
 }
 .slideshow_chart span {
-  font-size: 28px;
+  font-size: 14px;
 }
 .slideshow_chart span:last-child {
-  font-size: 20px;
+  font-size: 10px;
   color: #f10215;
 }
 .slideshow_img {
@@ -120,15 +120,15 @@ export default {
   justify-content: space-between;
 }
 .slideshow_img img {
-  width: 100px;
-  height: 92px;
-  border-radius: 10px;
+  width: 50px;
+  height: 46px;
+  border-radius: 5px;
 }
 .goods_name {
   width: 90%;
-  height: 332px;
+  height: 166px;
   margin: auto;
-  padding: 35px 0;
+  padding: 17.5px 0;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -137,14 +137,14 @@ export default {
 }
 .goods_name p {
   margin: 0;
-  font-size: 26px;
+  font-size: 13px;
   color: #333;
 }
 .goods_name p span {
   color: #999;
 }
 .goods_inventory {
-  height: 110px;
+  height: 55px;
   width: 90%;
   margin: auto;
   display: flex;
@@ -152,49 +152,45 @@ export default {
   justify-content: space-between;
 }
 .inventory_operation {
-  height: 60px;
-  width: 212px;
+  height: 30px;
+  width: 106px;
 }
 .inventory_operation span {
   width: 30%;
-  line-height: 60px;
+  line-height: 30px;
   display: inline-block;
   background: #f8f8f8;
-  font-size: 36px;
+  font-size: 18px;
   color: #666;
 }
 .inventory_operation .inventory_number {
-  font-size: 26px;
+  font-size: 13px;
   color: #9b9b9b;
 }
 .goods_descript {
   width: 90%;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 .goods_descript label {
-  width: 158px;
+  width: 79px;
   float: left;
   text-align: left;
-  font-size: 26px;
+  font-size: 13px;
   color: #333;
 }
 .goods_descript .float_left {
-  margin-left: 158px;
+  margin-left: 79px;
   text-align: left;
 }
 .goods_descript img {
-  width: 150px;
-  height: 150px;
-  border-radius: 10px;
+  width: 75px;
+  height: 75px;
+  border-radius: 5px;
 }
 .descript_img {
   display: flex;
   justify-content: space-between;
 }
-/* .goods_pay{
-    width: 90%;
-    margin: auto;
-} */
 .goods_pay p {
   margin: 0;
 }
@@ -202,7 +198,7 @@ export default {
   border-bottom: 1px solid #eee;
 }
 .goods_pay .pay_type {
-  height: 90px;
+  height: 45px;
   margin: auto;
   width: 90%;
   display: flex;
@@ -210,21 +206,21 @@ export default {
   justify-content: space-between;
 }
 .come_plan {
-  margin: 30px auto;
+  margin: 15px auto;
   width: 90%;
-  height: 150px;
+  height: 75px;
   text-align: left;
   position: relative;
 }
 .come_plan input {
   margin: 0;
   float: left;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 .come_plan span {
-  font-size: 22px;
+  font-size: 11px;
   color: #9b9b9b;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 .come_plan .plan_button {
   position: absolute;
@@ -233,19 +229,19 @@ export default {
   display: flex;
 }
 .come_plan .plan_button p {
-  height: 56px;
-  width: 160px;
-  font-size: 28px;
+  height: 28px;
+  width: 80px;
+  font-size: 14px;
   color: #333;
-  border: 2px solid #000;
+  border: 1px solid #000;
   text-align: center;
-  line-height: 56px;
-  border-radius: 50px;
-  margin-left: 30px;
+  line-height: 28px;
+  border-radius: 25px;
+  margin-left: 15px;
 }
 .come_plan .plan_button p:last-child {
   background: #f10215;
   color: #eee;
-  border: 2px solid #f10215;
+  border: 1px solid #f10215;
 }
 </style>

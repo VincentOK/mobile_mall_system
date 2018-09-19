@@ -20,4 +20,11 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+.tab_left .vux-tab-container{
+  left: 44px;
+  height: 45px;
+}
+.tab_left .vux-tab .vux-tab-item{
+  background: #fff;
+}
 </style>

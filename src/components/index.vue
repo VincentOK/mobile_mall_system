@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="index">
       <side-bar></side-bar>
       <div class="header">
         <i @click="showSide" class="iconfont mall_icon-caidan"></i>  
@@ -66,23 +66,20 @@ export default {
 <style scoped>
 .header {
   position: fixed;
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background-color: #f8818a;
-  top: 20px;
-  left: 20px;
+  top: 10px;
+  left: 10px;
 }
 .header i {
-  position: absolute;
-  display: block;
-  left: 13px;
-  top: 14px;
   color: aliceblue;
+  line-height: 30px;
 }
 .total_revenue {
   width: 100%;
-  height: 300px;
+  height: 150px;
   background: #f10215;
   color: #ffffff;
   display: flex;
@@ -91,31 +88,31 @@ export default {
   align-items: center;
 }
 .total_revenue p:first-child {
-  font-size: 28px;
-  margin-bottom: 30px;
+  font-size: 14px;
+  margin-bottom: 15px;
 }
 .total_revenue p:last-child {
-  font-size: 70px;
+  font-size: 35px;
 }
 .order_header {
-  margin: 22px auto;
-  height: 160px;
+  margin: 11px auto;
+  height: 80px;
   width: 93.3%;
   background: #ffffff;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px #f0f0f0;
+  border-radius: 2.5px;
+  box-shadow: 2.5px 2.5px 2.5px #f0f0f0;
   color: #333;
 }
 .order_header img:last-child {
-  height: 26px;
-  width: 26px;
+  height: 13px;
+  width: 13px;
 }
 .pending_order {
   display: flex;
   justify-content: space-between;
   width: 94%;
   margin: auto;
-  padding-top: 20px;
+  padding-top: 10px;
 }
 .pending_order div {
   display: flex;
@@ -126,14 +123,14 @@ export default {
 } */
 .pending_order div p {
   margin:0;
-  margin-left: 10px;
-  font-size: 23px;
+  margin-left: 5px;
+  font-size: 11.5px;
 }
 .pending_chart {
-  font-size: 50px;
+  font-size: 25px;
   font-weight: bold;
   text-align: center;
   margin:0;
-  margin-top: 15px;
+  margin-top: 7.5px;
 }
 </style>
