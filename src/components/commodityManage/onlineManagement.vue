@@ -11,7 +11,7 @@
           <tab-item>审核中</tab-item>
         </tab>
       </div>
-
+      <p class="snap"></p>
       <div class="saleList">
           <div class="sale_heard">
             <span>上架时间：</span>
@@ -38,7 +38,7 @@
             <span>44</span>
           </div>        
       </div>
-
+<p class="snap"></p>
 <div class="soldOut">
           <div class="sale_heard">
             <span>上架时间：</span>
@@ -68,6 +68,7 @@
             <span>44</span>
           </div>        
       </div>
+      <p class="snap"></p>
 <div class="saleList">
           <div class="sale_heard">
             <span>上架时间：</span>
@@ -94,6 +95,7 @@
             <span>44</span>
           </div>        
       </div>
+      <p class="snap"></p>
     </div>
 </template>
 
@@ -139,9 +141,13 @@ export default {
   height: 90px;
   background: #f8818a;
 }
-.online_management {
-  min-height: 100vh;
+.snap{
+  height: 14px;
+  margin: 0;
   background-color: #f8f8f8;
+}
+p{
+  margin: 0;
 }
 .header {
   position: fixed;
@@ -159,13 +165,8 @@ export default {
   top: 14px;
   color: aliceblue;
 }
-.saleList {
-  width: 100%;
-  margin-top: 14px;
-}
 .sale_heard {
   height: 80px;
-  background-color: #fff;
   font-size: 26px;
   text-align: left;
 }
@@ -183,6 +184,7 @@ export default {
 }
 .sale_body_content {
   box-sizing: border-box;
+  background-color: #f8f8f8;
   padding: 16px 26px;
   height: 100%;
   display: flex;
@@ -194,7 +196,6 @@ export default {
   align-items: center;
 }
 .sold_out p {
-  margin: 0;
   height: 40px;
   width: 96px;
   color: #fff;
@@ -225,13 +226,8 @@ export default {
   font-size: 22px;
   color: #999;
 }
-.sale_detail p {
-  margin: 0;
-}
-
 .sale_footer {
   height: 80px;
-  background-color: #fff;
   line-height: 80px;
   text-align: right;
 }
