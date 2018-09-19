@@ -96,41 +96,41 @@
   .inputbankword{
     margin: 0;
     text-align: left;
-    padding-left: 20px;
-    margin-top: -15px;
-    margin-bottom: 15px;
+    padding-left: 10px;
+    margin-top: -7.5px;
+    margin-bottom: 7.5px;
     color: #f10215;
   }
   .i_class{
     color: #f10215;
-    padding: 30px;
+    padding: 15px;
     background-color: white;
     border-radius: 50%;
     position: absolute;
-    left: 75px;
-    top: 75px;
+    left: 32.5px;
+    top: 32.5px;
   }
   .card_front{
     flex: 1;
     background-color: #f8f8f8;
-    width: 244px;
-    height: 244px;
+    width: 122px;
+    height: 122px;
     position: relative;
   }
   .card_after{
     position: relative;
     flex: 1;
     background-color: #f8f8f8;
-    width: 244px;
-    height: 244px;
-    margin-left: 28px;
+    width: 122px;
+    height: 122px;
+    margin-left: 14px;
   }
   .photocard{
-    width: 520px;
-    height: 244px;
+    width: 260px;
+    height: 122px;
     display: flex;
-    margin-left: 20px;
-    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-bottom: 10px;
   }
   .cardphoto{
     color: black;
@@ -139,13 +139,13 @@
     text-align: left;
   }
   .null_grey{
-    height: 15px;
+    height: 7.5px;
     width: 100%;
     background-color: #eeeeee
   }
   .input_height{
-    height: 80px;
-    line-height: 80px;
-    font-size: 26px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 13px;
   }
 </style>
