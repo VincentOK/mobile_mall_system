@@ -4,7 +4,6 @@ Vue.use(Router)
 
 export default new Router({
     routes: [
-
         { path: '/', redirect: 'index' },
         {
             path: '/index',
@@ -46,5 +45,10 @@ export default new Router({
             component: resolve => require(['../components/commodityManage/goodsDetail.vue'], resolve),
             meta: { title: '商品详情' },
         },
+      {
+        path: '/changePassword',
+        component: resolve => require(['../components/personal/changePassword.vue'], resolve),
+        meta: { title: '修改密码' },
+      },
     ]
 })
