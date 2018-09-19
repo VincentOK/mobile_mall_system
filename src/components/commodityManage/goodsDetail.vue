@@ -83,10 +83,19 @@
 export default {
   name: "goodsDetail",
   data() {
-    return {};
+    return {
+      status:String,
+    };
   },
   methods: {},
-  mounted: function() {}
+  updated: function() {    
+  },
+  watch:{
+    "$route":function(route){
+       let self = this;
+        self.status = this.$route.query.status
+    }
+  }
 };
 </script>
 

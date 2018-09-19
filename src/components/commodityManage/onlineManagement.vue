@@ -17,7 +17,7 @@
           <span>2018-07-15</span>
           <span>18:34</span>
         </div>
-        <div class="sale_body">
+        <div class="sale_body" @click="jumpDetail">
           <div class="sale_body_content">
             <img src="/static/img/demo.jpg">
             <div class="sale_detail">
@@ -47,7 +47,7 @@
           <span>2018-07-15</span>
           <span>18:34</span>
         </div>
-        <div class="sale_body">
+        <div class="sale_body" @click="jumpDetail">
           <div class="sale_body_content">
             <div class="sold_out">
               <p><span style="color:#ccc">已下架</span></p>
@@ -80,7 +80,7 @@
           <span>2018-07-15</span>
           <span>18:34</span>
         </div>
-        <div class="sale_body">
+        <div class="sale_body" @click="jumpDetail">
           <div class="sale_body_content">
             <img src="/static/img/demo.jpg">
             <div class="sale_detail">
@@ -129,6 +129,17 @@ export default {
     },
     onItemClick(index) {
       this.listStatus = index;
+    },
+    jumpDetail(){
+      let self = this;
+      let status = this.listStatus;
+      if(status == '0'){
+        self.$router.push({path:'./goodsDetail',query:{status:"0"}});
+      }else if(status == '1'){
+        self.$router.push({path:'./goodsDetail',query:{status:"1"}});
+      }else if(status == '2'){
+        self.$router.push({path:'./goodsDetail',query:{status:"2"}});
+      }
     }
   },
   mounted: function() {},
