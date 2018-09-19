@@ -50,10 +50,10 @@
 
 <style scoped>
   .x_input{
-    font-size: 28px;
+    font-size: 14px;
   }
   .bottom_all{
-    padding: 22px 0 0 0;
+    padding: 11px 0 0 0;
   }
   .right_login{
     float: right;
@@ -68,28 +68,28 @@
     background-color: #f10215;
   }
   .btn_sub{
-    margin-top: 100px;
-    height: 80px;
-    line-height: 80px;
-    font-size: 32px;
+    margin-top: 50px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
   }
   .vux-x-input{
 
-    padding: 20px 0;
+    padding: 10px 0;
   }
   .weui-vcode{
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 0.5px solid #eeeeee;
   }
   .vux-x-input input{
-    text-indent: 20px;
+    text-indent: 10px;
   }
 .login_title{
-  font-size: 36px;
+  font-size: 18px;
   color: #000000;
-  margin: 100px 0 136px 0;
+  margin: 50px 0 68px 0;
 }
   .x_input{
-    width: 640px;
+    width: 320px;
     margin: auto;
   }
 </style>

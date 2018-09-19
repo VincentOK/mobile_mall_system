@@ -1,8 +1,8 @@
 <template>
     <div>
       <tab active-color="#f10215"  custom-bar-width="70px">
-        <tab-item class="tab_title" selected @on-item-click="handler">收到的消息</tab-item>
-        <tab-item class="tab_title" badge-background="#38C972" badge-color="#fff" @on-item-click="handler">发出的消息</tab-item>
+        <tab-item class="tab_title" selected @on-item-click="handler">个人商户</tab-item>
+        <tab-item class="tab_title" badge-background="#38C972" badge-color="#fff" @on-item-click="handler">企业商户</tab-item>
       </tab>
 
           <div class="null_grey"></div>
@@ -10,7 +10,32 @@
           <x-input class="input_height" title="个人姓名:" v-model="password2" type="text" placeholder="请输入您的姓名" :equal-with="password"></x-input>
           <x-input class="input_height" title="手机号:" v-model="password2" type="text" placeholder="请输入手机号码" :equal-with="password"></x-input>
           <div class="null_grey"></div>
-          <!--身份证正反照-->
+
+
+      <!--银行卡号及收款人-->
+      <div class="null_grey"></div>
+      <x-input class="input_height" title="收款人:" v-model="password2" type="text" placeholder="请输入您的姓名" :equal-with="password"></x-input>
+      <x-input class="input_height" title="银行卡号:" v-model="password2" type="text" placeholder="请输入手机号码" :equal-with="password"></x-input>
+      <p class="inputbankword">（请谨慎填写，用于商城结算收款）</p>
+
+
+      <div v-if="componey">
+        <!-- 营业执照类 -->
+        <div class="null_grey"></div>
+        <x-input class="input_height" title="营业执照名称:" v-model="password2" type="text" placeholder="请输入营业执照名称" :equal-with="password"></x-input>
+        <x-input class="input_height" title="统一社会信用代码:" v-model="password2" type="text" placeholder="请输入社会信用代码(三证合一)" :equal-with="password"></x-input>
+        <!--营业执照副本-->
+        <x-input class="input_height cardphoto"  title="营业执照(副本):" type="text" placeholder="" show-clear="true" readonly="true"></x-input>
+        <div class="photocard">
+          <div class="card_front_componey">
+            <div>
+              <i class="iconfont mall_icon-jiahao i_class"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--身份证正反照-->
           <x-input class="input_height cardphoto"  title="身份证照片:" type="text" placeholder="" v-model="val" show-clear="true" readonly="true"></x-input>
           <div class="photocard">
             <div class="card_front">
@@ -39,12 +64,6 @@
             </div>
           </div>
 
-      <!--银行卡号及收款人-->
-      <div class="null_grey"></div>
-      <x-input class="input_height" title="收款人:" v-model="password2" type="text" placeholder="请输入您的姓名" :equal-with="password"></x-input>
-      <x-input class="input_height" title="银行卡号:" v-model="password2" type="text" placeholder="请输入手机号码" :equal-with="password"></x-input>
-      <p class="inputbankword">（请谨慎填写，用于商城结算收款）</p>
-
 
       <!--登陆账号及密码-->
       <div class="null_grey"></div>
@@ -57,6 +76,10 @@
       <div style="padding:15px;text-align: left;">
         <check-icon class="check_icon" :value.sync="demo1">我已阅读并同意《时间商城商户入驻协议》</check-icon>
       </div>
+
+      <div class="btn_div">
+        <button>提交申请</button>
+      </div>
     </div>
 </template>
 
@@ -68,7 +91,8 @@
           return{
             val:'请上传手持身份证照片',
             val_i:'(例：食品流通许可)',
-            demo1:true
+            demo1:true,
+            componey:false
           }
       },
       components: {
@@ -80,13 +104,36 @@
       },
       methods:{
         handler(val){
-          console.log(val)
+          console.log(val);
+          if(val === 1){
+            this.componey = true
+          }else {
+            this.componey = false
+          }
         }
       }
     }
 </script>
 
 <style scoped>
+  .btn_div{
+    width: 295px;
+    margin: auto;
+    background-color: #f10215;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 30px;
+    opacity: 0.5;
+    margin-bottom: 10px;
+  }
+  .btn_div button{
+    border: none;
+    background-color: #f10215;
+    color: white;
+    font-size: 18px;
+    height: 45px;
+    line-height: 45px;
+  }
   .vux-check-icon > .weui-icon-success-circle:before {
     color: #f10215;
   }
@@ -131,6 +178,13 @@
     display: flex;
     margin-left: 10px;
     margin-bottom: 10px;
+  }
+  .card_front_componey{
+    position: relative;
+    width: 130px;
+    height: 122px;
+    margin-left: 14px;
+    background-color: #f8f8f8;
   }
   .cardphoto{
     color: black;
