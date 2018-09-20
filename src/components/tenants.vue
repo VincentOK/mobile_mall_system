@@ -192,11 +192,6 @@
   .photo_title{
     text-align: left;
   }
-  .null_grey{
-    height: 7.5px;
-    width: 100%;
-    background-color: #eeeeee
-  }
   .input_height{
     height: 40px;
     line-height: 40px;

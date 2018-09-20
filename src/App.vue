@@ -27,4 +27,9 @@ export default {
 .tab_left .vux-tab .vux-tab-item{
   background: #fff;
 }
+  .null_grey{
+    height: 7.5px;
+    width: 100%;
+    background-color: #eeeeee
+  }
 </style>

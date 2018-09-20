@@ -41,6 +41,21 @@ export default new Router({
               component: resolve => require(['../components/personal/changePassword.vue'], resolve),
               meta: { title: '修改密码' },
             },
+            {
+              path: '/UntreatedOrders',
+              component: resolve => require(['../components/order_management/UntreatedOrders.vue'], resolve),
+              meta: { title: '待处理订单' },
+            },
+            {
+              path: '/ProcessedOrder',
+              component: resolve => require(['../components/order_management/ProcessedOrder.vue'], resolve),
+              meta: { title: '已处理订单' },
+            },
+            {
+              path: '/DetailRefund',
+              component: resolve => require(['../components/order_management/DetailRefund.vue'], resolve),
+              meta: { title: '订单详情' },
+            },
           ]
         },
       {
@@ -57,6 +72,6 @@ export default new Router({
         path: '/forgetpassword',
         component: resolve => require(['../components/forgetPassword.vue'], resolve),
         meta: { title: '忘记密码' },
-      },
+      }
     ]
 })
