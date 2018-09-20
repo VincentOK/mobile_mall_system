@@ -17,7 +17,7 @@
           <span>2018-07-15</span>
           <span>18:34</span>
         </div>
-        <div class="sale_body">
+        <div class="sale_body" @click="jumpDetail">
           <div class="sale_body_content">
             <img src="/static/img/demo.jpg">
             <div class="sale_detail">
@@ -47,7 +47,7 @@
           <span>2018-07-15</span>
           <span>18:34</span>
         </div>
-        <div class="sale_body">
+        <div class="sale_body" @click="jumpDetail">
           <div class="sale_body_content">
             <div class="sold_out">
               <p><span style="color:#ccc">已下架</span></p>
@@ -80,7 +80,7 @@
           <span>2018-07-15</span>
           <span>18:34</span>
         </div>
-        <div class="sale_body">
+        <div class="sale_body" @click="jumpDetail">
           <div class="sale_body_content">
             <img src="/static/img/demo.jpg">
             <div class="sale_detail">
@@ -119,7 +119,7 @@ export default {
   data() {
     return {
       monney: "￥29.92",
-      listStatus: "0"
+      listStatus: "0",
     };
   },
   methods: {
@@ -129,9 +129,22 @@ export default {
     },
     onItemClick(index) {
       this.listStatus = index;
+    },
+    jumpDetail() {
+      let self = this;
+      let status = this.listStatus;
+      if (status == "0") {
+        self.$router.push({ path: "./goodsDetail", query: { status: "0" } });
+      } else if (status == "1") {
+        self.$router.push({ path: "./goodsDetail", query: { status: "1" } });
+      } else if (status == "2") {
+        self.$router.push({ path: "./goodsDetail", query: { status: "2" } });
+      }
     }
   },
-  mounted: function() {},
+  mounted: function() {
+    this.status = "saleList";
+  },
   filters: {}
 };
 </script>
@@ -149,17 +162,16 @@ p {
   position: fixed;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
-  background-color: #f8818a;
   top: 8px;
   left: 10px;
 }
 .header i {
   position: absolute;
   display: block;
-  left: 6.5px;
-  top: 7px;
-  color: aliceblue;
+  left: 15px;
+  top: 2.5px;
+  color: #666;
+  font-size: 18px;
 }
 .sale_heard {
   height: 40px;
