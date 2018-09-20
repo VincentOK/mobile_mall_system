@@ -119,7 +119,7 @@ export default {
   data() {
     return {
       monney: "￥29.92",
-      listStatus: "0"
+      listStatus: "0",
     };
   },
   methods: {
@@ -130,19 +130,21 @@ export default {
     onItemClick(index) {
       this.listStatus = index;
     },
-    jumpDetail(){
+    jumpDetail() {
       let self = this;
       let status = this.listStatus;
-      if(status == '0'){
-        self.$router.push({path:'./goodsDetail',query:{status:"0"}});
-      }else if(status == '1'){
-        self.$router.push({path:'./goodsDetail',query:{status:"1"}});
-      }else if(status == '2'){
-        self.$router.push({path:'./goodsDetail',query:{status:"2"}});
+      if (status == "0") {
+        self.$router.push({ path: "./goodsDetail", query: { status: "0" } });
+      } else if (status == "1") {
+        self.$router.push({ path: "./goodsDetail", query: { status: "1" } });
+      } else if (status == "2") {
+        self.$router.push({ path: "./goodsDetail", query: { status: "2" } });
       }
     }
   },
-  mounted: function() {},
+  mounted: function() {
+    this.status = "saleList";
+  },
   filters: {}
 };
 </script>
