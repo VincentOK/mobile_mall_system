@@ -8,33 +8,46 @@
       <div class="slideshow_img">
         <img src="/static/img/demo.jpg" alt="">
         <img src="/static/img/demo.jpg" alt="">
-        <!-- <img src="/static/img/demo.jpg" alt="">
         <img src="/static/img/demo.jpg" alt="">
-        <img src="/static/img/demo.jpg" alt=""> -->
+        <img src="/static/img/demo.jpg" alt="">
+        <img src="/static/img/demo.jpg" alt="">
       </div>
     </div>
     <p class="snap"></p>
-    <div class="goods_name">
+        <group class="price_input">
+          <x-input title="商品名称：" disabled type="text" placeholder="" v-model="goodsName"
+            ></x-input>
+          <x-input title="出售规格：" disabled v-model="saleStandard" type="text" placeholder=""></x-input>
+          <x-input title="实际售价：" type="text" placeholder="" v-model="suggestPrice"
+            ></x-input>
+          <x-input title="建议售价：" v-model="suggestPrice" type="text" placeholder=""></x-input>
+        </group>
+    <!-- <div class="goods_name">
       <p>商品名称：山东烟台苹果整箱包邮5斤</p>
-      <p>出售规格：每份300克</p>
+      <p>出售规格：每份300克</p>    
       <p>实际售价：<span>￥29.80</span></p>
       <p>建议售价：<span>￥38.25</span></p>
-    </div>
+    </div> -->
     <p class="snap"></p>
-    <div class="goods_inventory">
+    <!-- <div class="goods_inventory">
       <p>剩余库存</p>
       <div class="inventory_operation">
         <span>-</span>
         <span class="inventory_number">500</span>
         <span>+</span>
       </div>
-    </div>
+    </div> -->
+    <group class="count_style">
+      <x-number :name="'c'" :title="'剩余库存'"></x-number>
+    </group>
     <p class="snap"></p>
     <div class="goods_descript">
       <label>商品详情</label>
       <div class="float_left">
         <p>烟台苹果是以烟台辖区内的长岛县、龙口、莱阳、莱州、招远、栖霞和海阳等地栽培的苹果。烟台苹果栽培历史悠久，是中国苹果栽培最早的地方。1871年西洋苹果引进烟台，有140多年的历史</p>
         <div class="descript_img">
+          <img src="/static/img/demo.jpg">
+          <img src="/static/img/demo.jpg">
           <img src="/static/img/demo.jpg">
           <img src="/static/img/demo.jpg">
           <img src="/static/img/demo.jpg">
@@ -63,8 +76,9 @@
       </div>
       <div class="pay_bottom">
         <div class="pay_type">
-          <p>支持退货</p>
-          <input type="radio" name="radio" value="1">
+          <label for="radio">支持退货</label>
+          <icon type="success" class="red_icon" v-if="goodsReturn"></icon>
+          <icon type="clear" class="gray_icon" v-else></icon>
         </div>
       </div>
       <div class="come_plan">
@@ -76,10 +90,10 @@
         <p>预览</p>
       </div>
       <div class="check_button" v-if="goodsDetail == 'goods_check'">
-        <p>
+        <div class="goods_incon">
           <i class="iconfont mall_icon-yulan"></i>
           <span>预览</span>
-        </p>
+        </div>
         <p>下架</p>
         <p>保存</p>
       </div>
@@ -88,11 +102,23 @@
 </template>
 
 <script>
+import { Icon, Group, XInput,XNumber } from "vux";
 export default {
   name: "goodsDetail",
+  components: {
+    Icon,
+    Group,
+    XInput,
+    XNumber
+  },
   data() {
     return {
-      goodsDetail: String
+      goodsDetail: String,
+      goodsReturn: "",
+      reallyPrice: "45.31",
+      suggestPrice: "654.41",
+      saleStandard: "每份300克",
+      goodsName: "山东烟台苹果整箱包邮5斤"
     };
   },
 
@@ -107,6 +133,8 @@ export default {
       }
     }
   },
+
+  watch: {},
   mounted() {
     this.getStatus(this.$route.query.status);
   }
@@ -144,37 +172,20 @@ export default {
   font-size: 10px;
   color: #f10215;
 }
-.slideshow_chart .goods_sold{
+.slideshow_chart .goods_sold {
   font-size: 10px;
   color: #9b9b9b;
 }
 .slideshow_img {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  /* justify-content:space-around */
 }
 .slideshow_img img {
   width: 50px;
   height: 46px;
   border-radius: 5px;
-}
-.goods_name {
-  width: 90%;
-  height: 166px;
-  margin: auto;
-  padding: 17.5px 0;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-.goods_name p {
-  margin: 0;
-  font-size: 13px;
-}
-.goods_name p span {
-  color: #999;
+  margin: 0 8.5px;
 }
 .goods_inventory {
   height: 55px;
@@ -218,14 +229,18 @@ export default {
   width: 75px;
   height: 75px;
   border-radius: 5px;
+  margin: 5px;
 }
 .descript_img {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-around; */
+  flex-wrap: wrap;
+  /* align-content:space-around; */
 }
 .goods_pay p {
   margin: 0;
 }
+
 .goods_pay .pay_bottom {
   border-bottom: 1px solid #eee;
 }
@@ -237,6 +252,7 @@ export default {
   align-items: center;
   justify-content: space-between;
 }
+
 .come_plan {
   margin: 15px auto;
   width: 90%;
@@ -274,25 +290,25 @@ export default {
   color: #eee;
   border: 1px solid #f10215;
 }
-.check_button{
+.check_button {
   display: flex;
   margin-top: 20px;
 }
-.check_button p:first-child {
+.check_button .goods_incon {
   width: 25%;
   background: #fffffe;
   font-size: 12px;
   display: flex;
   flex-direction: column;
-  line-height: 20.5px;
 }
-.check_button p .iconfont{
+.check_button .goods_incon .iconfont {
+  margin-top: 3px;
   font-size: 20px;
 }
 .check_button p {
   height: 53px;
-  width: 37.5%;
   line-height: 53px;
+  width: 37.5%;
   font-size: 16px;
   color: #333;
   background: #eee;

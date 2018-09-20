@@ -162,17 +162,16 @@ p {
   position: fixed;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
-  background-color: #f8818a;
   top: 8px;
   left: 10px;
 }
 .header i {
   position: absolute;
   display: block;
-  left: 6.5px;
-  top: 7px;
-  color: aliceblue;
+  left: 15px;
+  top: 2.5px;
+  color: #666;
+  font-size: 18px;
 }
 .sale_heard {
   height: 40px;
