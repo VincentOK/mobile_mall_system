@@ -34,7 +34,7 @@
           <ul class="msg_slidebar">
             <li @click="messageList"><i class="iconfont mall_icon-xiaoxi" style="padding: 10px 10px 10px 0px"></i>消息中心</li>
             <li  @click="ChangePassword"><i class="iconfont mall_icon-mima"   style="padding: 10px 10px 10px 0px"></i>修改密码</li>
-            <li><i class="iconfont mall_icon-tuichu6"   style="padding: 10px 10px 10px 0px"></i>退出账号</li>
+            <li @click="userLoginout"><i class="iconfont mall_icon-tuichu6"  style="padding: 10px 10px 10px 0px"></i>退出账号</li>
           </ul>
         </div>
       </div>
@@ -44,6 +44,13 @@
 
 <script>
   import {mapState, mapMutations,mapActions} from 'vuex'
+  import {
+    loginout
+  } from "../../../utils/config/request";
+  import {
+    removeStorage
+  } from "../../../utils/config/sessionStorage";
+
   export default {
     components:{},
     data () {
@@ -136,6 +143,24 @@
         console.log(val);
         this.HIDESIDEBAR();
         this.$router.push({path:val})
+      },
+      /**
+       * 退出登陆
+       */
+      userLoginout(){
+        loginout().then(res =>{
+          console.log(res)
+          if (res.code ==="0"){
+            removeStorage('token');
+            removeStorage('userInfo');
+            removeStorage('resourceList');
+            this.$router.push("/login");
+          } else {
+            this.$vux.toast.show({text: res.msg});
+          }
+        }).catch(err =>{
+          console.log(err)
+        });
       }
     }
   }
