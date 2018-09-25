@@ -13,16 +13,17 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.15.3",
+    "crypto-js": "^3.1.9-1",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "postcss": "^7.0.2",
     "postcss-px2rem": "^0.3.0",
     "px2rem-loader": "^0.1.9",
+    "qs": "^6.5.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "axios": "^0.15.3",
-    "qs": "^6.5.2",
     "vux": "^2.9.2",
     "vux-loader": "^1.2.9",
     "yaml-loader": "^0.5.0"

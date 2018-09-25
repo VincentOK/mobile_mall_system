@@ -12,7 +12,7 @@
         <!-- css transition动画 加深理解 -->
         <div class="sidebar-el-menu">
           <template v-for="item in resourceList">
-            <template v-if="item.childResources">
+            <template v-if="item.childResources && item.name !=='资产管理'">
               <div class="twoResources" :index="(item.id).toString()" :key="item.id">
                 <template>
                   <div  class="title_children">
@@ -20,12 +20,12 @@
                   </div>
                 </template>
                 <div class="childrenRes" v-for="(subItem,i) in item.childResources" :key="i" @click="gotoResources(subItem.url)">
-                  {{ subItem.name }}
+                    {{ subItem.name }}
                 </div>
               </div>
             </template>
             <template v-else>
-              <div class="slideBarTitle" :index="item.url" :key="item.id">
+              <div class="slideBarTitle" :index="item.url" :key="item.id" v-if="item.name !=='资产管理'"  @click="gotoResources(item.url)">
                 <i :class="'bgiconfont iconfont '+item.icon"  style="padding: 10px"></i><span slot="title">{{ item.name }}</span>
               </div>
             </template>
@@ -48,61 +48,71 @@
     components:{},
     data () {
       return {
-        resourceList: [
-            {
-                icon: 'shopping-icon-home-fill',
-                url: 'dashboard',
-                name: '概览'
-            },
-            {
-                icon: 'mall_icon-shangpin',
-                id: '1',
-                name: '商品管理',
-              childResources: [
-                    {
-                        url: 'onlineManagement',
-                        name: '线上商品管理'
-                    },
-                    {
-                        url: 'addnewgoods',
-                        name: '新增商品'
-                    }
-                ]
-            },
-            {
-                icon: 'mall_icon-dingdan',
-                id: '4',
-                name: '订单管理',
-              childResources: [
-                    {
-                        url: 'untreatedOrders',
-                        name: '待处理订单'
-                    },
-                    {
-                        url: 'processedOrder',
-                        name: '已处理订单'
-                    }
-                ]
-            },
-            {
-                icon: 'mall_icon-zichan',
-                id: '3',
-                name: '资产管理',
-                childResources: [
-                    {
-                        url: 'Incomestatistics',
-                        name: '收益统计与结算'
-                    },
-                    {
-                        url: 'returnsdetailed',
-                        name: '结算明细'
-                    }
-                ]
-            },
-        ]
+        // resourceList: [
+        //     {
+        //         icon: 'shopping-icon-home-fill',
+        //         url: 'dashboard',
+        //         name: '概览'
+        //     },
+        //     {
+        //         icon: 'mall_icon-shangpin',
+        //         id: '1',
+        //         name: '商品管理',
+        //       childResources: [
+        //             {
+        //                 url: 'onlineManagement',
+        //                 name: '线上商品管理'
+        //             },
+        //             {
+        //                 url: 'addnewgoods',
+        //                 name: '新增商品'
+        //             }
+        //         ]
+        //     },
+        //     {
+        //         icon: 'mall_icon-dingdan',
+        //         id: '4',
+        //         name: '订单管理',
+        //       childResources: [
+        //             {
+        //                 url: 'untreatedOrders',
+        //                 name: '待处理订单'
+        //             },
+        //             {
+        //                 url: 'processedOrder',
+        //                 name: '已处理订单'
+        //             }
+        //         ]
+        //     },
+        //     {
+        //         icon: 'mall_icon-zichan',
+        //         id: '3',
+        //         name: '资产管理',
+        //         childResources: [
+        //             {
+        //                 url: 'Incomestatistics',
+        //                 name: '收益统计与结算'
+        //             },
+        //             {
+        //                 url: 'returnsdetailed',
+        //                 name: '结算明细'
+        //             }
+        //         ]
+        //     },
+        // ]
       }
     },
     created(){
+    },
+    computed:{
+      ...mapState([
+        'isShow','resourceList'
+      ]),
+      isRellyShow(){
+        return this.isShow;
+      }
+    },
+    mounted:function(){
     },
     methods: {
       ...mapMutations([
@@ -127,16 +137,6 @@
         this.HIDESIDEBAR();
         this.$router.push({path:val})
       }
-    },
-    computed:{
-      ...mapState([
-        'isShow'
-      ]),
-      isRellyShow(){
-        return this.isShow;
-      }
-    },
-    mounted:function(){
     }
   }
 </script>
