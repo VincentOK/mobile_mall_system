@@ -8,10 +8,10 @@ export default new Router({
     {
       path: '/',
       component: resolve => require(['../components/index.vue'], resolve),
-      redirect: '/home',
+      redirect: '/dashboard',
       meta: {title: '自述文件'},
       children: [{
-        path: '/home',
+        path: '/dashboard',
         component: resolve => require(['../components/index/home.vue'], resolve),
         meta: {title: '首页'},
       },

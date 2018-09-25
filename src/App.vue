@@ -5,8 +5,27 @@
 </template>
 
 <script>
+  import { removeStorage } from "./utils/config/sessionStorage";
+  import {mapState, mapMutations,mapActions} from 'vuex'
 export default {
-  name: "App"
+  name: "App",
+  mounted(){
+    try {
+      this.GET_LOCALUSERINFO();
+    }catch (e) {
+      alert('用户信息错误');
+      removeStorage('token');
+      removeStorage('userInfo');
+      removeStorage('resourceList');
+      this.$router.push('/login');
+    }
+  },
+  methods:{
+    ...mapMutations([
+      'GET_LOCALUSERINFO'
+    ]),
+  }
+
 };
 </script>
 <style>

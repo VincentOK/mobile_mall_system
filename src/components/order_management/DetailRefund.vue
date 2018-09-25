@@ -84,13 +84,28 @@
           <span class="agree_btn">同意</span>
           <span class="refund_btn">拒绝</span>
         </div>
-
       </div>
+      <!--<sendGoods-view></sendGoods-view>-->
+      <!--<refunfSend-view></refunfSend-view>-->
+      <!--<refundMoney-view></refundMoney-view>-->
+      <!--<agreeMonry-view></agreeMonry-view>-->
+      <!--<toBuyerMoney-view></toBuyerMoney-view>-->
     </div>
 </template>
 
 <script>
-  import { XInput  } from 'vux'
+  import { XInput } from 'vux'
+  import Vue from 'vue'
+  import sendGoods from './order_dialog/sendDoods'
+  import refunfSend from './order_dialog/refundSend'
+  import refundMoney from './order_dialog/refundMoney'
+  import agreeMonry from './order_dialog/agreeMoney'
+  import toBuyerMoney from './order_dialog/toBuyerMoney'
+  Vue.component('sendGoods-view',sendGoods);
+  Vue.component('refunfSend-view',refunfSend);
+  Vue.component('refundMoney-view',refundMoney);
+  Vue.component('agreeMonry-view',agreeMonry);
+  Vue.component('toBuyerMoney-view',toBuyerMoney);
     export default {
         name: "DetailRefund",
       data(){
@@ -124,6 +139,11 @@
         }
       },
       components: {
+        toBuyerMoney,
+        agreeMonry,
+        refundMoney,
+        refunfSend,
+        sendGoods,
         XInput
       },
     }

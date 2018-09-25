@@ -19,11 +19,12 @@
 
 
 
-        <x-button class="login_btn btn_sub" type="">登陆</x-button>
+        <x-button class="login_btn btn_sub" type="" @click.native="loginBtn">登陆</x-button>
 
         <div class="bottom_all">
-          <label class="login_bottom left_login">商家入驻申请</label>
-          <label class="login_bottom right_login">忘记密码？</label>
+          <router-link :to="'/tenants'"><label class="login_bottom left_login">商家入驻申请</label></router-link>
+          <router-link :to="'/forgetpassword'"><label class="login_bottom right_login">忘记密码？</label></router-link>
+
         </div>
       </div>
     </div>
@@ -31,7 +32,11 @@
 
 <script>
   import { Group, XInput,XButton } from 'vux'
-    export default {
+  import {
+    userLogin
+  } from "../utils/config/request";
+
+  export default {
         name: "login",
       data(){
           return{
@@ -44,6 +49,16 @@
         Group,
         XInput,
         XButton
+      },
+      methods:{
+          loginBtn(){
+            alert("登陆");
+            userLogin().then(res =>{
+              console.log(res)
+            }).catch(err =>{
+              console.log(err)
+            })
+          }
       }
     }
 </script>

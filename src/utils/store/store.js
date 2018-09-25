@@ -6,8 +6,11 @@ import  mutations  from './mutations'
 import actions from './actions'
 
 const state = {
-  isShow:false
-}
+  isShow:false,
+  token:null,
+  userInfo:null,
+  resourceList:null
+};
 export default new Vuex.Store({
   state,
   getters,
