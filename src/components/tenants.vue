@@ -6,7 +6,7 @@
       </tab>
 
           <div class="null_grey"></div>
-          <x-input class="input_height" title="商户名称:"  type="text" placeholder="请输入商户名称" v-model="password" :min="6" :max="6" @on-change="change"></x-input>
+          <x-input class="input_height" title="商户名称:"  type="text" :is-type="checkUserName(commercialName)" placeholder="请输入商户名称" v-model="commercialName"></x-input>
           <x-input class="input_height" title="个人姓名:" v-model="password2" type="text" placeholder="请输入您的姓名" :equal-with="password"></x-input>
           <x-input class="input_height" title="手机号:" v-model="password2" type="text" placeholder="请输入手机号码" :equal-with="password"></x-input>
           <div class="null_grey"></div>
@@ -67,7 +67,7 @@
 
       <!--登陆账号及密码-->
       <div class="null_grey"></div>
-      <x-input class="input_height" title="用户名:" v-model="password2" type="text" placeholder="请输入用户名" :equal-with="password"></x-input>
+      <x-input  class="input_height" title="用户名:" mask="999 9999 9999" :max="13"  v-model="password2" name="mobile" placeholder="请输入用户名" keyboard="number" is-type="china-mobile"></x-input>
       <x-input class="input_height" title="密码:" v-model="password2" type="text" placeholder="请输入登录密码" :equal-with="password"></x-input>
       <x-input class="input_height" title="确认密码:" v-model="password2" type="text" placeholder="请再次输入密码" :equal-with="password"></x-input>
       <p class="inputbankword">（请牢记账号信息，用于登陆商户后台）</p>
@@ -85,14 +85,30 @@
 
 <script>
   import { Tab, TabItem,Group,XInput,CheckIcon  } from 'vux'
-    export default {
+  import {
+    checkName
+  } from "../utils/config/common_js";
+
+  export default {
         name: "tenants",
       data(){
           return{
             val:'请上传手持身份证照片',
             val_i:'(例：食品流通许可)',
+            checkUserName:function (val) {
+              console.log(checkName(val)+"========"+val);
+              if(checkName(val)){
+                return {valid:true}
+              }else {
+                return {valid:false,msg:'商户名不正确'}
+              }
+
+            },
             demo1:true,
-            componey:false
+            componey:false,
+            password:'',
+            password2:'',
+            commercialName:'',//商户名
           }
       },
       components: {
