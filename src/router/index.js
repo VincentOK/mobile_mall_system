@@ -30,9 +30,19 @@ export default new Router({
                     meta: { title: '线上商品' },
                 },
                 {
+                    path: '/addnewgoods',
+                    component: resolve => require(['../components/commodityManage/addNewGoods.vue'], resolve),
+                    meta: { title: '新增商品' },
+                },
+                {
                     path: '/goodsDetail',
                     component: resolve => require(['../components/commodityManage/goodsDetail.vue'], resolve),
                     meta: { title: '商品详情' },
+                },
+                {
+                    path: '/previewDetail',
+                    component: resolve => require(['../components/commodityManage/previewDetails.vue'], resolve),
+                    meta: { title: '预览详情' },
                 },
                 {
                     path: '/changePassword',

@@ -45,7 +45,8 @@ body {
   text-align: left;
   padding: 10px 0;
 }
-.price_input .weui-cell:before {
+.price_input .weui-cell:before,
+.popup_pay .weui-cell:before {
   border: 0;
 }
 .price_input .weui-cells:before,
@@ -53,7 +54,8 @@ body {
   border: 0;
 }
 .price_input .weui-cells:after,
-.count_style .weui-cells:after{
+.count_style .weui-cells:after,
+.popup_pay .weui-cells:after{
   border: 0;
 }
 .price_input .weui-cells  {
@@ -81,5 +83,15 @@ body {
 }
 .count_style .vux-number-selector svg{
   fill: #333;
+}
+.popup_pay .weui-cell__bd {
+    text-align: left;
+    font-size: 13px;
+}
+/* .vux-checklist-icon-checked::before{
+  color: red!important
+} */
+.popup_pay .weui-cells_checkbox .weui-check:checked + .vux-checklist-icon-checked:before{
+  color: #f10215
 }
 </style>

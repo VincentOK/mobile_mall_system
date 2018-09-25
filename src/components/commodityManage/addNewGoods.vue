@@ -1,9 +1,9 @@
 <template>
-  <div :class="goodsDetail">
+  <div class="goods_sale">
     <div class="slide_show">
       <div class="slideshow_chart">
         <span>商品轮播图</span>
-        <span :class="goodsDetail">(最多5张)</span>
+        <span class="goods_sale">(最多5张)</span>
       </div>
       <div class="slideshow_img">
         <img src="/static/img/demo.jpg" alt="">
@@ -15,47 +15,31 @@
     </div>
     <p class="snap"></p>
         <group class="price_input">
-          <x-input title="商品名称：" disabled type="text" placeholder="" v-model="goodsName"
+          <x-input title="商品名称：" v-model="goodsName" type="text" placeholder="请输入不超过12字"
             ></x-input>
-          <x-input title="出售规格：" disabled v-model="saleStandard" type="text" placeholder=""></x-input>
-          <x-input title="实际售价：" type="text" placeholder="" v-model="suggestPrice"
+          <x-input title="出售规格：" v-model="saleStandard" type="text" placeholder="请输入商品出售的单位规格"></x-input>
+          <x-input title="实际售价：" v-model="reallyPrice" type="text" placeholder="请输入单位实际售价" 
             ></x-input>
-          <x-input title="建议售价：" v-model="suggestPrice" type="text" placeholder=""></x-input>
+          <x-input title="建议售价：" v-model="suggestPrice" type="text" placeholder="请输入单位建议售价"></x-input>
         </group>
-    <!-- <div class="goods_name">
-      <p>商品名称：山东烟台苹果整箱包邮5斤</p>
-      <p>出售规格：每份300克</p>    
-      <p>实际售价：<span>￥29.80</span></p>
-      <p>建议售价：<span>￥38.25</span></p>
-    </div> -->
-    <p class="snap"></p>
-    <!-- <div class="goods_inventory">
-      <p>剩余库存</p>
-      <div class="inventory_operation">
-        <span>-</span>
-        <span class="inventory_number">500</span>
-        <span>+</span>
-      </div>
-    </div> -->
-    <group class="count_style">
-      <x-number :name="'c'" :title="'剩余库存'"></x-number>
-    </group>
-    <p class="snap"></p>
     <div class="goods_descript">
       <label>商品详情</label>
       <div class="float_left">
-        <p>烟台苹果是以烟台辖区内的长岛县、龙口、莱阳、莱州、招远、栖霞和海阳等地栽培的苹果。烟台苹果栽培历史悠久，是中国苹果栽培最早的地方。1871年西洋苹果引进烟台，有140多年的历史</p>
-        <div class="descript_img">
-          <img src="/static/img/demo.jpg">
-          <img src="/static/img/demo.jpg">
-          <img src="/static/img/demo.jpg">
-          <img src="/static/img/demo.jpg">
-          <img src="/static/img/demo.jpg">
-        </div>
+         <x-textarea :max="200" name="description" placeholder="请进一步描述商品，或注意事项"></x-textarea>
       </div>
     </div>
     <p class="snap"></p>
     <div class="goods_pay">
+      <div class="pay_bottom">
+        <div class="pay_type">
+          <p>快递运费</p>
+          <div class="pay_way">
+            <input type="radio" name="pay" value='male'/><label>包邮</label>
+            <input type="radio" name="pay" value="female"/><label>买家承担</label>
+            <input type="text" class="pay_input">
+          </div>
+        </div>
+      </div>
       <div class="pay_bottom">
         <div class="pay_type">
           <p>支付渠道</p>
@@ -63,15 +47,9 @@
         </div>
       </div>
       <div class="pay_bottom">
-        <div class="pay_type">
+        <div class="pay_type" @click="payTypeDialog = true">
           <p>发票类型</p>
           <p>普通发票</p>
-        </div>
-      </div>
-      <div class="pay_bottom">
-        <div class="pay_type">
-          <p>快递运费</p>
-          <p>包邮</p>
         </div>
       </div>
       <div class="pay_bottom">
@@ -85,17 +63,9 @@
         <input type="checkbox">
         <span>参与商城促销计划（推荐）</span>
       </div>
-      <div class="plan_button" v-if="goodsDetail == 'goods_sale'">
-        <p>保存</p>
-        <p @click="previewDetail">预览</p>
-      </div>
-      <div class="check_button" v-if="goodsDetail == 'goods_check'">
-        <div class="goods_incon" @click="previewDetail">
-          <i class="iconfont mall_icon-yulan"></i>
-          <span>预览</span>
-        </div>
-        <p @click="dialogShow">下架</p>
-        <p>保存</p>
+      <div class="plan_button">
+        <p @click="previewDetail">查看预览</p>
+        <p>提交上架</p>
       </div>
     </div>
     <div>
@@ -109,6 +79,24 @@
         </div>
       </x-dialog>
     </div>
+     <div>
+      <popup v-model="payTypeDialog" @on-hide="log('hide')" @on-show="log('show')">
+        <div class="popup_pay">
+            <div class="popup_title">
+                <i @click="payTypeDialog=false" class="iconfont mall_icon-guanbi"></i>
+                发票类型
+            </div>
+          <checklist required  
+          label-position="left" 
+          :options="commonList" 
+          v-model="checklist001" 
+          @on-change="change"></checklist>
+          <div class="preview_submit">
+              <x-button class="preview_button" type="warn">确认</x-button>
+        </div>
+        </div>
+      </popup>
+    </div>
   </div>
 </template>
 
@@ -117,8 +105,11 @@ import {
   Icon,
   Group,
   XInput,
-  XNumber,
+  XButton,
   XDialog,
+  XTextarea,
+  Checklist,
+  Popup,
   TransferDomDirective as TransferDom
 } from "vux";
 export default {
@@ -126,53 +117,53 @@ export default {
   components: {
     Icon,
     Group,
+    Popup,
     XInput,
-    XNumber,
+    XButton,
     XDialog,
+    Checklist,
+    XTextarea,
     TransferDom
   },
   data() {
     return {
+      payTypeDialog: false,
       goodsDetail: String,
       showHideOnBlur: false,
+      labelPosition: "",
       goodsReturn: "",
-      reallyPrice: "45.31",
-      suggestPrice: "654.41",
-      saleStandard: "每份300克",
-      goodsName: "山东烟台苹果整箱包邮5斤"
+      reallyPrice: "",
+      suggestPrice: "",
+      saleStandard: "",
+      goodsName: "",
+      checklist001: [],
+      commonList: ["普通发票", "增值税专用发票"]
     };
   },
 
   methods: {
-    getStatus(value) {
-      if (value == "0") {
-        this.goodsDetail = "goods_sale";
-      } else if (value == "1") {
-        this.goodsDetail = "goods_sold";
-      } else if (value == "2") {
-        this.goodsDetail = "goods_check";
-      }
-    },
     previewDetail() {
       this.$router.push({ path: "./previewDetail" });
     },
-    dialogShow(){
+    dialogShow() {
       this.showHideOnBlur = true;
     },
-    confirmSold(){
-      
+    confirmSold() {},
+    log(key, item) {
+      console.log(key, item);
+    },
+    change(val, label) {
+      console.log("change", val, label);
     }
   },
 
   watch: {},
-  mounted() {
-    this.getStatus(this.$route.query.status);
-  }
+  mounted() {}
 };
 </script>
 
 <style scoped>
-p{
+p {
   margin: 0;
 }
 .snap {
@@ -250,21 +241,15 @@ p{
   width: 79px;
   float: left;
   text-align: left;
-  font-size: 13px;
+  font-size: 12px;
 }
 .goods_descript .float_left {
   margin-left: 79px;
   text-align: left;
 }
-.goods_descript img {
-  width: 75px;
-  height: 75px;
+.float_left .vux-x-textarea {
+  border: 1px solid #9b9b9b;
   border-radius: 5px;
-  margin: 5px;
-}
-.descript_img {
-  display: flex;
-  flex-wrap: wrap;
 }
 .goods_pay .pay_bottom {
   border-bottom: 1px solid #eee;
@@ -277,7 +262,16 @@ p{
   align-items: center;
   justify-content: space-between;
 }
-
+.pay_way {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pay_input {
+  width: 45%;
+  border-radius: 4px;
+  border: 1px solid #9b9b9b;
+}
 .come_plan {
   margin: 15px auto;
   width: 90%;
@@ -314,35 +308,8 @@ p{
   color: #eee;
   border: 1px solid #f10215;
 }
-.check_button {
-  display: flex;
-  margin-top: 20px;
-}
-.check_button .goods_incon {
-  width: 25%;
-  background: #fffffe;
-  font-size: 12px;
-  display: flex;
-  flex-direction: column;
-}
-.check_button .goods_incon .iconfont {
-  margin-top: 5px;
-  font-size: 20px;
-}
-.check_button p {
-  height: 53px;
-  line-height: 53px;
-  width: 37.5%;
-  font-size: 16px;
-  color: #333;
-  background: #eee;
-  text-align: center;
-}
-.check_button p:last-child {
-  background: #f10215;
-  color: #eee;
-}
-.soldOut_box p{
+
+.soldOut_box p {
   height: 100px;
   display: flex;
   font-size: 16px;
@@ -350,20 +317,47 @@ p{
   justify-content: center;
   align-items: center;
 }
-.soldOut_button{
+.soldOut_button {
   height: 44px;
   display: flex;
   justify-content: center;
 }
-.soldOut_button p{
+.soldOut_button p {
   width: 50%;
   height: 100%;
   line-height: 44px;
   font-size: 16px;
   border-top: 1px solid #eee;
 }
-.soldOut_button p:last-child{
+.soldOut_button p:last-child {
   background-color: #f10215;
   color: #eee;
+}
+.vux-popup-dialog {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background: #fff;
+}
+.popup_title {
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-size: 18px;
+  position: relative;
+}
+.mall_icon-guanbi {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  font-size: 25px;
+}
+.preview_submit {
+  width: 94%;
+  margin: 10px auto;
+  text-align: left;
+}
+.preview_button {
+  border-radius: 99px;
+  width: 295px;
 }
 </style>
