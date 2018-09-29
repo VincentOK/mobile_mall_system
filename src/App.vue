@@ -115,4 +115,24 @@ body {
   width: 100%;
   background-color: #eeeeee;
 }
+.pay_left_icon .vux-checklist-label-left{
+  margin-left: 40px
+}
+.pay_select_all .vux-check-icon > .weui-icon-success:before,
+.pay_select_all .vux-check-icon > .weui-icon-success-circle:before, 
+.retrun_goods .vux-check-icon > .weui-icon-success:before,
+.retrun_goods .vux-check-icon > .weui-icon-success-circle:before,
+.pay_way .vux-check-icon > .weui-icon-success:before,
+.pay_way .vux-check-icon > .weui-icon-success-circle:before{
+  color: #f10215
+}
+
+.pay_way .weui-icon-success{
+  font-size: 13px;
+  margin-right: 2px;
+}
+.pay_way .weui-icon-circle{
+  font-size: 13px;
+  margin-right: 2px;
+}
 </style>

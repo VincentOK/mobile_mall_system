@@ -34,33 +34,40 @@
         <div class="pay_type">
           <p>快递运费</p>
           <div class="pay_way">
-            <input type="radio" name="pay" value='male'/><label>包邮</label>
-            <input type="radio" name="pay" value="female"/><label>买家承担</label>
-            <input type="text" class="pay_input">
+            <div @click="changeFreight(orderFreight)" style="margin-right:5px">
+              <check-icon :value.sync="orderFreight"></check-icon>包邮
+              </div>
+              <div @click="changeNotFreight(NorderFreight)">
+              <check-icon :value.sync="NorderFreight"></check-icon>买家承担
+              </div>
+            <!-- <input type="radio" name="pay" value="female"/><label>买家承担</label> -->
+            <input type="text" class="pay_input" v-model="carriage" v-show="NorderFreight">
           </div>
         </div>
       </div>
       <div class="pay_bottom">
-        <div class="pay_type">
+        <div class="pay_type" @click="payTypeDialog = true">
           <p>支付渠道</p>
-          <p>支付宝支付</p>
+          <p><img src="/static/img/right.png" width="20px" height="20px" alt=""></p>
         </div>
       </div>
       <div class="pay_bottom">
-        <div class="pay_type" @click="payTypeDialog = true">
+        <div class="pay_type" @click="invoiceTypeDialog = true">
           <p>发票类型</p>
-          <p>普通发票</p>
+          <p><img src="/static/img/right.png" width="20px" height="20px" alt=""></p>
         </div>
       </div>
       <div class="pay_bottom">
         <div class="pay_type">
           <label for="radio">支持退货</label>
-          <icon type="success" class="red_icon" v-if="goodsReturn"></icon>
-          <icon type="clear" class="gray_icon" v-else></icon>
+          <div class="retrun_goods">
+            <check-icon :value.sync="returnGoods"></check-icon>
+          </div>
         </div>
       </div>
       <div class="come_plan">
-        <input type="checkbox">
+        <img src="/static/img/salesPromotion.png" alt="" @click="changePromotion(selectPromotion)" v-show="selectPromotion">
+        <img src="/static/img/promotion.png" alt="" @click="changePromotion(selectPromotion)" v-show="!selectPromotion">
         <span>参与商城促销计划（推荐）</span>
       </div>
       <div class="plan_button">
@@ -80,24 +87,62 @@
       </x-dialog>
     </div>
      <div>
+      <popup v-model="invoiceTypeDialog" @on-hide="log('hide')" @on-show="log('show')">
+        <div class="popup_pay">
+            <div class="popup_title">
+                <i @click="invoiceTypeDialog=false" class="iconfont mall_icon-guanbi"></i>
+                发票类型
+            </div>
+          <checklist required  
+          :disabled='isSupportInvoice'
+          label-position="left" 
+          :options="commonList" 
+          v-model="checkInvoiceList" 
+          @on-change="change"></checklist>
+          <checklist
+          label-position="left" 
+          :options="isSupportCommon" 
+          v-model="isInvoiceList" 
+          @on-change="changeSupportInvoice"></checklist>
+          <div class="preview_submit">
+              <x-button class="preview_button" type="warn">确认</x-button>
+          </div>
+        </div>
+      </popup>
+    </div>
       <popup v-model="payTypeDialog" @on-hide="log('hide')" @on-show="log('show')">
         <div class="popup_pay">
             <div class="popup_title">
                 <i @click="payTypeDialog=false" class="iconfont mall_icon-guanbi"></i>
-                发票类型
+                支付渠道
             </div>
-          <checklist required  
+            <!-- <checklist
           label-position="left" 
-          :options="commonList" 
-          v-model="checklist001" 
-          @on-change="change"></checklist>
+          :options="isSupportPay" 
+          v-model="isPayList" 
+          @on-change="changeSupportPay"></checklist> -->
+          <div class="pay_select_all">
+            <span class="select_all">全选</span>
+            <div @click="selectAllPayList(isSelectAllPayList)">
+              <check-icon :value.sync="isSelectAllPayList"></check-icon>
+            </div>
+          </div>
+          <div class="pay_img">
+            <checklist required  class="pay_left_icon"
+            label-position="left" 
+            :options="payTypeList" 
+            v-model="checkPayTypeList" 
+            @on-change="changePayList">
+            </checklist>
+            <img src="/static/img/weixin.png" class="weixin" width="20px" height="20px" alt="">
+          <img src="/static/img/zhifubao.png" class="zhifubao" width="20px" height="20px" alt="">
+          </div>
           <div class="preview_submit">
               <x-button class="preview_button" type="warn">确认</x-button>
-        </div>
+          </div>
         </div>
       </popup>
     </div>
-  </div>
 </template>
 
 <script>
@@ -108,6 +153,7 @@ import {
   XButton,
   XDialog,
   XTextarea,
+  CheckIcon,
   Checklist,
   Popup,
   TransferDomDirective as TransferDom
@@ -121,6 +167,7 @@ export default {
     XInput,
     XButton,
     XDialog,
+    CheckIcon,
     Checklist,
     XTextarea,
     TransferDom
@@ -128,19 +175,42 @@ export default {
   data() {
     return {
       payTypeDialog: false,
+      invoiceTypeDialog: false,
       goodsDetail: String,
       showHideOnBlur: false,
+      isSupportInvoice: false,
+      orderFreight:false,
+      NorderFreight:false,
+      selectPromotion:false,
       labelPosition: "",
       goodsReturn: "",
       reallyPrice: "",
       suggestPrice: "",
       saleStandard: "",
       goodsName: "",
-      checklist001: [],
-      commonList: ["普通发票", "增值税专用发票"]
+      checkInvoiceList: [],
+      checkPayTypeList: [],
+      isInvoiceList: [],
+      isSelectAllPayList: false,
+      returnGoods:false,
+      carriage:null,
+      commonList: [
+        { key: "0", value: "普通发票" },
+        { key: "1", value: "增值税专用发票" }
+      ],
+      payTypeList: [
+        { key: "0", value: "支付宝支付" },
+        { key: "1", value: "微信支付" }
+      ],
+      isSupportPay: [{ key: "0", value: "全选" }],
+      isSupportCommon: [{ key: "0", value: "该商品不提供发票" }]
     };
   },
-
+  //  watch: {
+  //   isSelectAllPayList: function (newQuestion, oldQuestion) {
+  //     console.log(1)
+  //   }
+  // },
   methods: {
     previewDetail() {
       this.$router.push({ path: "./previewDetail" });
@@ -154,6 +224,51 @@ export default {
     },
     change(val, label) {
       console.log("change", val, label);
+    },
+    changePayList(val, label) {
+      if (val.length == this.payTypeList.length) {
+        this.isSelectAllPayList = true;
+      } else {
+        this.isSelectAllPayList = false;
+      }
+    },
+    changeSupportInvoice(val, label) {
+      console.log("change", val, label);
+      if (Boolean(val.length)) {
+        this.isSupportInvoice = true;
+        this.checkInvoiceList = [];
+      } else {
+        this.isSupportInvoice = false;
+      }
+    },
+    // changeSupportPay(val) {
+    //   if (val.length) {
+    //     this.checkPayTypeList = [0, 1];
+    //     // this.checkPayTypeList= this.payTypeList;
+    //   } else {
+    //     this.checkPayTypeList = [];
+    //   }
+    // },
+    selectAllPayList(value) {
+      if (value) {
+        this.checkPayTypeList = [0, 1];
+      } else {
+        this.checkPayTypeList = [];
+      }
+    },
+    changeFreight(val){
+      if(val){
+        this.NorderFreight = false;
+        this.carriage = null
+      }
+    },
+    changeNotFreight(val){
+      if(val){
+        this.orderFreight = false
+      }
+    },
+    changePromotion(val){
+      this.selectPromotion = !val;
     }
   },
 
@@ -263,14 +378,39 @@ p {
   justify-content: space-between;
 }
 .pay_way {
+  width: 270px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 .pay_input {
-  width: 45%;
+  width: 50%;
   border-radius: 4px;
   border: 1px solid #9b9b9b;
+  margin-left: 10px;
+  height: 22px;
+}
+.pay_select_all {
+  width: 89%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+}
+.pay_img {
+  position: relative;
+}
+.weixin {
+  position: absolute;
+  top: 85px;
+  left: 20px;
+}
+.zhifubao{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.select_all {
+  font-size: 16px;
 }
 .come_plan {
   margin: 15px auto;
@@ -278,9 +418,11 @@ p {
   text-align: left;
   position: relative;
 }
-.come_plan input {
+.come_plan img {
   float: left;
-  margin-top: 2px;
+  margin-top: 2.5px;
+  width: 12px;
+  height: 13px;
 }
 .come_plan span {
   font-size: 11px;
