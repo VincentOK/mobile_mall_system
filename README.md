@@ -11,21 +11,12 @@ npm install
 # serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification
-npm run build
+main入口文件路由跳转需注释才可正常跳转到主页
 
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
 ![登陆](https://raw.githubusercontent.com/VincentOK/mobile_mall_system/lianghc/src/assets/README/A.png)
+![主页](https://raw.githubusercontent.com/VincentOK/mobile_mall_system/lianghc/src/assets/README/B.png)
+![订单](https://raw.githubusercontent.com/VincentOK/mobile_mall_system/lianghc/src/assets/README/C.png)
+![消息](https://raw.githubusercontent.com/VincentOK/mobile_mall_system/lianghc/src/assets/README/D.png)
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
