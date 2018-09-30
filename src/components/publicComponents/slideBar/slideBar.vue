@@ -178,7 +178,7 @@
     padding: 26px 35px 0px 0px;
   }
   .bgiconfont{
-    color: lightgray;
+    color: grey;
   }
   .title_children{
     color: #333333;

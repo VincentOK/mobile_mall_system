@@ -20,9 +20,9 @@ import {
 
 Vue.config.productionTip = false;
 
-
 //使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {
+  store.commit('UPDATALOADINGSTATUS', {isLoading: true});
   let role = getStorage('userInfo');
   if (role) {
     try {
@@ -61,6 +61,10 @@ router.beforeEach((to, from, next) => {
         next()
     }
   }
+});
+
+router.afterEach(function (to) {
+  store.commit('UPDATALOADINGSTATUS', {isLoading: false})
 });
 /* eslint-disable no-new */
 new Vue({

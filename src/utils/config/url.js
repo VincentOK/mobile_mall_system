@@ -15,7 +15,8 @@ let iv = 'KHGTHNBF14896325';
 
 console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV == 'development') {
-  baseUrl = 'http://192.168.0.154:8989';
+  // baseUrl = 'http://192.168.0.154:8989';
+  baseUrl = 'https://www.nihaotime.com/';
   // imgBaseUrl = '/img/';
 } else if (process.env.NODE_ENV == 'production') {
   baseUrl = 'http://l92.168.0.154:8989';

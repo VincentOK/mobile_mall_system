@@ -6,6 +6,7 @@ import  mutations  from './mutations'
 import actions from './actions'
 
 const state = {
+  isLoading: false,
   isShow:false,
   token:null,
   userInfo:null,

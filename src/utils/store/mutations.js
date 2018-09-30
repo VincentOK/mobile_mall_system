@@ -5,6 +5,7 @@ import {
 import {
   HIDEBAR,
   SHOWBAR,
+  UPDATALOADINGSTATUS,
   GET_USERINFO,
   GET_RESOURCE,
   GET_USERTOKEN,
@@ -24,6 +25,10 @@ export default {
   //隐藏左侧菜单
   [HIDEBAR](state){
     state.isShow=false
+  },
+  //页面loading层
+  [UPDATALOADINGSTATUS](state,payload){
+    state.isLoading = payload.isLoading
   },
   //获取用户token存入vuex
   [GET_USERTOKEN](state,info){

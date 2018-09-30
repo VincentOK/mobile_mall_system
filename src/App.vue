@@ -1,14 +1,24 @@
 <template>
   <div id="app">
+    <loading v-model="isLoading"></loading>
     <router-view/>
   </div>
 </template>
 
 <script>
 import { removeStorage } from "./utils/config/sessionStorage";
+import { Loading } from 'vux'
 import { mapState, mapMutations, mapActions } from "vuex";
 export default {
   name: "App",
+  components: {
+    Loading
+  },
+  computed:{
+    ...mapState([
+      'isLoading'
+    ])
+  },
   mounted() {
     try {
       this.GET_LOCALUSERINFO();

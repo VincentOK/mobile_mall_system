@@ -4,6 +4,7 @@
  */
 export const SHOWBAR = 'SHOWBAR';//显示菜单
 export const HIDEBAR = 'HIDEBAR';//显示菜单showSideBar
+export const UPDATALOADINGSTATUS = 'UPDATALOADINGSTATUS';//页面loading
 export const SHOWSIDEBAR = 'SHOWSIDEBAR';
 export const HIDESIDEBAR = 'HIDESIDEBAR';
 export const GET_USERTOKEN = 'GET_USERTOKEN';//获取用户详细信息
