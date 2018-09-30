@@ -135,7 +135,7 @@
             @on-change="changePayList">
             </checklist>
             <img src="/static/img/weixin.png" class="weixin" width="20px" height="20px" alt="">
-          <img src="/static/img/zhifubao.png" class="zhifubao" width="20px" height="20px" alt="">
+            <img src="/static/img/zhifubao.png" class="zhifubao" width="20px" height="20px" alt="">
           </div>
           <div class="preview_submit">
               <x-button class="preview_button" type="warn">确认</x-button>
@@ -179,9 +179,9 @@ export default {
       goodsDetail: String,
       showHideOnBlur: false,
       isSupportInvoice: false,
-      orderFreight:false,
+      orderFreight:true,
       NorderFreight:false,
-      selectPromotion:false,
+      selectPromotion:true,
       labelPosition: "",
       goodsReturn: "",
       reallyPrice: "",
@@ -192,7 +192,7 @@ export default {
       checkPayTypeList: [],
       isInvoiceList: [],
       isSelectAllPayList: false,
-      returnGoods:false,
+      returnGoods:true,
       carriage:null,
       commonList: [
         { key: "0", value: "普通发票" },
